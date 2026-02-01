@@ -20,4 +20,4 @@ __pycache__
 beautify_html.py
 workflow.md
 fix_image.py
-git_push.sh
+push.sh
