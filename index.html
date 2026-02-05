@@ -5,14 +5,21 @@
 <meta name='viewport' content='width=device-width, initial-scale=1'>
 <title>学习笔记仓库</title>
 <style type='text/css'>
-/* 基础重置和变量 */
+/* 基础重置和变量 - Slate Blue/Teal 主题 */
 :root {
-    --bg-color: #f5f7fa;
-    --card-bg: #ffffff;
-    --text-color: #333333;
-    --link-color: #4183C4;
-    --link-hover-color: #2d5a8a;
+    --primary-color: #6B7A8F; /* Slate Blue */
+    --primary-dark: #4A5568; /* 深石板蓝 */
+    --teal-color: #2C7A7B; /* Teal */
+    --teal-dark: #1A5F5F; /* 深青色 */
+    --bg-color: #F7FAFC; /* 极浅灰蓝 */
+    --card-bg: #FFFFFF;
+    --text-color: #2D3748; /* 深灰蓝 */
+    --text-light: #718096;
+    --link-color: #6B7A8F;
+    --link-hover-color: #4A5568;
+    --timeline-color: rgba(107, 122, 143, 0.3);
     --shadow: rgba(0, 0, 0, 0.1);
+    --shadow-hover: rgba(0, 0, 0, 0.15);
     --border-radius: 8px;
     --spacing-desktop: 24px;
     --spacing-mobile: 16px;
@@ -29,6 +36,7 @@ html {
     background-color: var(--bg-color);
     color: var(--text-color);
     -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -39,27 +47,62 @@ body {
     min-height: 100vh;
 }
 
-/* 头部样式 */
+/* Header 样式 - 左侧标题 + 右侧搜索框 */
 header {
     background-color: var(--card-bg);
-    padding: 3rem 2rem;
-    text-align: center;
+    padding: 2rem var(--spacing-desktop);
     box-shadow: 0 2px 4px var(--shadow);
     margin-bottom: 2rem;
 }
 
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
 header h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: bold;
-    margin-bottom: 0.5rem;
     color: var(--text-color);
-    border-bottom: none;
+    margin: 0;
+    flex-shrink: 0;
 }
 
 header p {
-    font-size: 1.1rem;
-    color: #666;
-    margin-top: 0.5rem;
+    display: none; /* 移除副标题，简化设计 */
+}
+
+/* 搜索框样式 */
+.search-box {
+    flex: 1;
+    max-width: 400px;
+}
+
+.search-box input[type="search"] {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--timeline-color);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-family: inherit;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: all 0.3s ease;
+}
+
+.search-box input[type="search"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(107, 122, 143, 0.1);
+    background-color: var(--card-bg);
+}
+
+.search-box input[type="search"]::placeholder {
+    color: var(--text-light);
 }
 
 /* 主容器 */
@@ -70,75 +113,235 @@ main {
     padding-bottom: 4rem;
 }
 
-/* 响应式网格布局 */
-.category-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--spacing-mobile);
-}
-
 @media screen and (min-width: 768px) {
-    .category-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: var(--spacing-desktop);
-    }
-    
     main {
         padding: 0 var(--spacing-desktop);
     }
 }
 
-/* 卡片样式 */
-.category-card {
-    background-color: var(--card-bg);
-    border-radius: var(--border-radius);
-    padding: 2rem;
-    box-shadow: 0 2px 8px var(--shadow);
-    transition: all 0.3s ease;
-}
-
-.category-card:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    transform: translateY(-2px);
-}
-
-.category-card h2 {
-    font-size: 1.75rem;
+/* Section 标题 */
+section h2 {
+    font-size: 2rem;
     font-weight: bold;
-    margin-bottom: 1.5rem;
     color: var(--text-color);
-    border-bottom: 2px solid #eee;
+    margin-bottom: 2rem;
     padding-bottom: 0.75rem;
+    border-bottom: 3px solid var(--primary-color);
 }
 
-/* 章节列表 */
-.chapter-list {
-    list-style: none;
-    padding: 0;
+/* ========== 时间序列时间轴样式 ========== */
+.timeline-section {
+    margin-bottom: 4rem;
 }
 
-.chapter-list li {
-    margin-bottom: 0.75rem;
+.timeline {
+    position: relative;
+    padding-left: 3rem;
+    margin-top: 2rem;
 }
 
-.chapter-list li:last-child {
+/* 垂直时间轴竖线 */
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.75rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, 
+        var(--primary-color) 0%, 
+        var(--timeline-color) 50%, 
+        var(--primary-color) 100%);
+}
+
+/* 时间轴节点 */
+.timeline-node {
+    position: relative;
+    margin-bottom: 2rem;
+    padding-left: 2rem;
+}
+
+.timeline-node:last-child {
     margin-bottom: 0;
 }
 
-.chapter-list a {
-    color: var(--link-color);
-    text-decoration: none;
-    font-size: 1rem;
-    display: inline-block;
-    padding: 0.5rem 0;
+/* 节点标记（圆形） */
+.timeline-node::before {
+    content: '';
+    position: absolute;
+    left: -2.5rem;
+    top: 0.25rem;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background-color: var(--card-bg);
+    border: 3px solid var(--primary-color);
     transition: all 0.3s ease;
-    border-bottom: 1px solid transparent;
+    z-index: 1;
 }
 
-.chapter-list a:hover {
-    color: var(--link-hover-color);
-    border-bottom-color: var(--link-hover-color);
+/* 节点连接线 */
+.timeline-node::after {
+    content: '';
+    position: absolute;
+    left: -2.25rem;
+    top: 1rem;
+    width: 1.5rem;
+    height: 1px;
+    background-color: var(--timeline-color);
+    transition: all 0.3s ease;
+}
+
+/* 节点悬停效果 */
+.timeline-node:hover::before {
+    background-color: var(--primary-color);
+    transform: scale(1.2);
+    box-shadow: 0 0 0 4px rgba(107, 122, 143, 0.2);
+}
+
+.timeline-node:hover::after {
+    background-color: var(--primary-color);
+    width: 2rem;
+}
+
+.timeline-node:hover .chapter-link {
+    color: var(--primary-color);
     padding-left: 0.5rem;
+}
+
+/* 章节链接样式 */
+.chapter-link {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    display: inline-block;
+    transition: all 0.3s ease;
+    padding: 0.5rem 0;
+}
+
+.chapter-link:hover {
+    color: var(--primary-color);
+}
+
+/* ========== 生成模型网格卡片样式 ========== */
+.models-section {
+    margin-bottom: 4rem;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-desktop);
+    margin-top: 2rem;
+}
+
+@media screen and (min-width: 768px) {
+    .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* 模型卡片 */
+.model-card {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--teal-color) 100%);
+    border-radius: var(--border-radius);
+    padding: 2.5rem;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 12px var(--shadow);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 卡片背景装饰 */
+.model-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.model-card:hover::before {
+    opacity: 1;
+}
+
+/* VAE 卡片特殊样式 */
+.model-card.vae-card {
+    background: linear-gradient(135deg, #6B7A8F 0%, #4A5568 100%);
+}
+
+/* Diffusion 卡片特殊样式 */
+.model-card.diffusion-card {
+    background: linear-gradient(135deg, #2C7A7B 0%, #1A5F5F 100%);
+}
+
+/* 卡片悬停效果 */
+.model-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 8px 24px var(--shadow-hover);
+}
+
+.model-card:active {
+    transform: translateY(-2px) scale(1.01);
+}
+
+/* 卡片内容 */
+.model-card h3 {
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 1rem;
+    z-index: 1;
+    position: relative;
+}
+
+.model-card p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    z-index: 1;
+    position: relative;
+    line-height: 1.6;
+}
+
+.model-card .card-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 1;
+    position: relative;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    backdrop-filter: blur(10px);
+}
+
+.model-card .card-link:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translateX(4px);
+}
+
+.model-card .card-link::after {
+    content: '→';
+    transition: transform 0.3s ease;
+}
+
+.model-card .card-link:hover::after {
+    transform: translateX(4px);
 }
 
 /* 页脚 */
@@ -146,31 +349,61 @@ footer {
     background-color: var(--card-bg);
     padding: 2rem;
     text-align: center;
-    color: #666;
+    color: var(--text-light);
     font-size: 0.9rem;
     margin-top: 3rem;
     box-shadow: 0 -2px 4px var(--shadow);
 }
 
-/* 响应式调整 */
+/* ========== 响应式设计 ========== */
 @media screen and (max-width: 767px) {
     header {
-        padding: 2rem 1rem;
+        padding: 1.5rem var(--spacing-mobile);
+    }
+    
+    .header-content {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
     }
     
     header h1 {
-        font-size: 2rem;
+        font-size: 1.75rem;
+        text-align: center;
     }
     
-    header p {
-        font-size: 1rem;
+    .search-box {
+        max-width: 100%;
     }
     
-    .category-card {
-        padding: 1.5rem;
+    section h2 {
+        font-size: 1.5rem;
     }
     
-    .category-card h2 {
+    .timeline {
+        padding-left: 2rem;
+    }
+    
+    .timeline-node {
+        padding-left: 1.5rem;
+    }
+    
+    .timeline-node::before {
+        left: -1.75rem;
+        width: 0.875rem;
+        height: 0.875rem;
+    }
+    
+    .timeline-node::after {
+        left: -1.5rem;
+    }
+    
+    .model-card {
+        padding: 2rem;
+        min-height: 180px;
+    }
+    
+    .model-card h3 {
         font-size: 1.5rem;
     }
 }
@@ -178,35 +411,69 @@ footer {
 </head>
 <body>
 <header>
-    <h1>学习笔记仓库</h1>
-    <p>关于统计学、深度学习与时间序列的探索</p>
+    <div class="header-content">
+        <h1>学习笔记仓库</h1>
+        <div class="search-box">
+            <input type="search" placeholder="搜索笔记..." />
+        </div>
+    </div>
 </header>
 
 <main>
-    <div class="category-grid">
-        <section class="category-card">
-            <h2>时间序列分析</h2>
-            <ul class="chapter-list">
-                <li><a href='./TimeSeries/Chapter1.html'>时间序列第一章</a></li>
-                <li><a href='./TimeSeries/Chapter3.html'>时间序列第三章</a></li>
-                <li><a href='./TimeSeries/Chapter5.html'>时间序列第五章</a></li>
-                <li><a href='./TimeSeries/Chapter6.html'>时间序列第六章</a></li>
-                <li><a href='./TimeSeries/Chapter7.html'>时间序列第七章</a></li>
-                <li><a href='./TimeSeries/Chapter8.html'>时间序列第八章</a></li>
-                <li><a href='./TimeSeries/Chapter9.html'>时间序列第九章</a></li>
-                <li><a href='./TimeSeries/Chapter10.html'>时间序列第十章</a></li>
-                <li><a href='./TimeSeries/Chapter11.html'>时间序列第十一章</a></li>
-            </ul>
-        </section>
+    <!-- 时间序列分析 - 垂直时间轴 -->
+    <section class="timeline-section">
+        <h2>时间序列分析</h2>
+        <div class="timeline">
+            <div class="timeline-node">
+                <a href='./TimeSeries/Chapter1.html' class="chapter-link">时间序列第一章</a>
+            </div>
+            <div class="timeline-node">
+                <a href='./TimeSeries/Chapter3.html' class="chapter-link">时间序列第三章</a>
+            </div>
+            <div class="timeline-node">
+                <a href='./TimeSeries/Chapter5.html' class="chapter-link">时间序列第五章</a>
+            </div>
+            <div class="timeline-node">
+                <a href='./TimeSeries/Chapter6.html' class="chapter-link">时间序列第六章</a>
+            </div>
+            <div class="timeline-node">
+                <a href='./TimeSeries/Chapter7.html' class="chapter-link">时间序列第七章</a>
+            </div>
+            <div class="timeline-node">
+                <a href='./TimeSeries/Chapter8.html' class="chapter-link">时间序列第八章</a>
+            </div>
+            <div class="timeline-node">
+                <a href='./TimeSeries/Chapter9.html' class="chapter-link">时间序列第九章</a>
+            </div>
+            <div class="timeline-node">
+                <a href='./TimeSeries/Chapter10.html' class="chapter-link">时间序列第十章</a>
+            </div>
+            <div class="timeline-node">
+                <a href='./TimeSeries/Chapter11.html' class="chapter-link">时间序列第十一章</a>
+            </div>
+        </div>
+    </section>
 
-        <section class="category-card">
-            <h2>生成式模型</h2>
-            <ul class="chapter-list">
-                <li><a href='./Diffusion/变分自编码器VAE.html'>变分自编码器VAE</a></li>
-                <li><a href='./Diffusion/Diffusion-1.html'>扩散模型Diffusion（一）—— DDPM</a></li>
-            </ul>
-        </section>
-    </div>
+    <!-- 生成式模型 - 网格卡片 -->
+    <section class="models-section">
+        <h2>生成式模型</h2>
+        <div class="card-grid">
+            <article class="model-card vae-card">
+                <div>
+                    <h3>变分自编码器</h3>
+                    <p>探索 VAE 的变分推断原理与生成模型实现</p>
+                </div>
+                <a href='./Diffusion/变分自编码器VAE.html' class="card-link">阅读笔记</a>
+            </article>
+            <article class="model-card diffusion-card">
+                <div>
+                    <h3>扩散模型 DDPM</h3>
+                    <p>深入理解去噪扩散概率模型的核心思想</p>
+                </div>
+                <a href='./Diffusion/Diffusion-1.html' class="card-link">阅读笔记</a>
+            </article>
+        </div>
+    </section>
 </main>
 
 <footer>
