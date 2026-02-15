@@ -1,0 +1,143 @@
+{
+  "generatedAt": "2026-02-15 10:43:43 +0200",
+  "total": 12,
+  "categories": [
+    {
+      "key": "all",
+      "name": "全部",
+      "count": 12
+    },
+    {
+      "key": "timeseries",
+      "name": "时间序列",
+      "count": 10
+    },
+    {
+      "key": "diffusion",
+      "name": "扩散模型",
+      "count": 2
+    }
+  ],
+  "notes": [
+    {
+      "id": "timeseries-chaper12",
+      "title": "第12章",
+      "fileName": "Chaper12.html",
+      "path": "TimeSeries/Chaper12.html",
+      "category": "timeseries",
+      "categoryName": "时间序列",
+      "updatedAt": "2026-02-15",
+      "updatedAtTs": 1771141759
+    },
+    {
+      "id": "timeseries-chapter11",
+      "title": "第11章",
+      "fileName": "Chapter11.html",
+      "path": "TimeSeries/Chapter11.html",
+      "category": "timeseries",
+      "categoryName": "时间序列",
+      "updatedAt": "2026-02-05",
+      "updatedAtTs": 1770285032
+    },
+    {
+      "id": "diffusion-diffusion-1",
+      "title": "Diffusion 1",
+      "fileName": "Diffusion-1.html",
+      "path": "Diffusion/Diffusion-1.html",
+      "category": "diffusion",
+      "categoryName": "扩散模型",
+      "updatedAt": "2026-02-03",
+      "updatedAtTs": 1770123536
+    },
+    {
+      "id": "diffusion-vae",
+      "title": "变分自编码器VAE",
+      "fileName": "变分自编码器VAE.html",
+      "path": "Diffusion/变分自编码器VAE.html",
+      "category": "diffusion",
+      "categoryName": "扩散模型",
+      "updatedAt": "2026-02-03",
+      "updatedAtTs": 1770122779
+    },
+    {
+      "id": "timeseries-chapter9",
+      "title": "第9章",
+      "fileName": "Chapter9.html",
+      "path": "TimeSeries/Chapter9.html",
+      "category": "timeseries",
+      "categoryName": "时间序列",
+      "updatedAt": "2026-02-01",
+      "updatedAtTs": 1769973437
+    },
+    {
+      "id": "timeseries-chapter8",
+      "title": "第8章",
+      "fileName": "Chapter8.html",
+      "path": "TimeSeries/Chapter8.html",
+      "category": "timeseries",
+      "categoryName": "时间序列",
+      "updatedAt": "2026-02-01",
+      "updatedAtTs": 1769973433
+    },
+    {
+      "id": "timeseries-chapter7",
+      "title": "第7章",
+      "fileName": "Chapter7.html",
+      "path": "TimeSeries/Chapter7.html",
+      "category": "timeseries",
+      "categoryName": "时间序列",
+      "updatedAt": "2026-02-01",
+      "updatedAtTs": 1769973428
+    },
+    {
+      "id": "timeseries-chapter6",
+      "title": "第6章",
+      "fileName": "Chapter6.html",
+      "path": "TimeSeries/Chapter6.html",
+      "category": "timeseries",
+      "categoryName": "时间序列",
+      "updatedAt": "2026-02-01",
+      "updatedAtTs": 1769973144
+    },
+    {
+      "id": "timeseries-chapter5",
+      "title": "第5章",
+      "fileName": "Chapter5.html",
+      "path": "TimeSeries/Chapter5.html",
+      "category": "timeseries",
+      "categoryName": "时间序列",
+      "updatedAt": "2026-02-01",
+      "updatedAtTs": 1769972409
+    },
+    {
+      "id": "timeseries-chapter3",
+      "title": "第3章",
+      "fileName": "Chapter3.html",
+      "path": "TimeSeries/Chapter3.html",
+      "category": "timeseries",
+      "categoryName": "时间序列",
+      "updatedAt": "2026-02-01",
+      "updatedAtTs": 1769972176
+    },
+    {
+      "id": "timeseries-chapter1",
+      "title": "第1章",
+      "fileName": "Chapter1.html",
+      "path": "TimeSeries/Chapter1.html",
+      "category": "timeseries",
+      "categoryName": "时间序列",
+      "updatedAt": "2026-02-01",
+      "updatedAtTs": 1769971641
+    },
+    {
+      "id": "timeseries-chapter10",
+      "title": "第10章",
+      "fileName": "Chapter10.html",
+      "path": "TimeSeries/Chapter10.html",
+      "category": "timeseries",
+      "categoryName": "时间序列",
+      "updatedAt": "2026-02-01",
+      "updatedAtTs": 1769971091
+    }
+  ]
+}

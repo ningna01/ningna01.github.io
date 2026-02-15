@@ -1,871 +1,879 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-<meta charset='UTF-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'>
-<title>学习笔记仓库</title>
-<style type='text/css'>
-/* ========== CSS 变量定义 ========== */
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>学习笔记索引</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
 :root {
-    /* Light Mode 颜色 */
-    --sidebar-bg: #F7F7F8;
-    --main-bg: #FFFFFF;
-    --text-color: #333333;
-    --text-light: #718096;
-    --accent-blue: #E3F2FD;
-    --accent-purple: #F3E5F5;
-    --border-color: rgba(0, 0, 0, 0.1);
-    --shadow: rgba(0, 0, 0, 0.1);
-    --primary-color: #6B7A8F;
-    --primary-dark: #4A5568;
-    --teal-color: #2C7A7B;
-    --teal-dark: #1A5F5F;
+    --bg: #f7f7f5;
+    --surface: #ffffff;
+    --surface-muted: #fafaf9;
+    --text: #171717;
+    --text-secondary: #575757;
+    --line: #e5e5e3;
+    --accent: #111111;
+    --accent-soft: rgba(17, 17, 17, 0.06);
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
 }
 
-body.dark-mode {
-    /* Dark Mode 颜色 */
-    --sidebar-bg: #1E1E1E;
-    --main-bg: #121212;
-    --text-color: #E0E0E0;
-    --text-light: #A0A0A0;
-    --accent-blue: rgba(30, 50, 70, 0.5);
-    --accent-purple: rgba(50, 30, 70, 0.5);
-    --border-color: rgba(255, 255, 255, 0.1);
-    --shadow: rgba(0, 0, 0, 0.3);
-    --primary-color: #8B9DB0;
-    --primary-dark: #6B7A8F;
-    --teal-color: #4C9A9B;
-    --teal-dark: #2C7A7B;
+:root[data-theme="dark"] {
+    --bg: #111111;
+    --surface: #171717;
+    --surface-muted: #1d1d1d;
+    --text: #ededed;
+    --text-secondary: #a8a8a8;
+    --line: #2c2c2c;
+    --accent: #f3f3f3;
+    --accent-soft: rgba(243, 243, 243, 0.08);
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
 }
 
-/* ========== 基础重置 ========== */
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
 }
 
-html, body {
-    height: 100%;
-    overflow: hidden;
+html,
+body {
+    margin: 0;
+    min-height: 100%;
 }
 
 body {
-    font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    background-color: var(--main-bg);
-    color: var(--text-color);
-    -webkit-font-smoothing: antialiased;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
 }
 
-/* ========== 双栏容器布局 ========== */
-.container {
-    display: flex;
-    height: 100vh;
-    overflow: hidden;
+a {
+    color: inherit;
+    text-decoration: none;
 }
 
-/* ========== 左侧导航栏 (Sidebar) ========== */
-.sidebar {
-    width: 280px;
-    background-color: var(--sidebar-bg);
-    border-right: 1px solid var(--border-color);
-    display: flex;
-    flex-direction: column;
-    transition: width 0.3s ease, transform 0.3s ease;
-    overflow: hidden;
-    position: relative;
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    border-bottom: 1px solid var(--line);
+    background: var(--bg);
+    backdrop-filter: blur(6px);
 }
 
-.sidebar.collapsed {
-    width: 60px;
-}
-
-.sidebar.collapsed .sidebar-content {
-    opacity: 0;
-    pointer-events: none;
-}
-
-.sidebar-toggle {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    width: 32px;
-    height: 32px;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    font-size: 1.2rem;
-    color: var(--text-color);
-    z-index: 10;
+.topbar-inner {
+    height: 58px;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 1rem;
     display: flex;
     align-items: center;
-    justify-content: center;
-    border-radius: 4px;
-    transition: background-color 0.2s ease;
+    justify-content: space-between;
+    gap: 1rem;
 }
 
-.sidebar-toggle:hover {
-    background-color: var(--border-color);
+.brand {
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
 }
 
-.sidebar-content {
-    flex: 1;
+.topnav {
     display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    transition: opacity 0.3s ease;
+    align-items: center;
+    gap: 0.4rem;
 }
 
-/* 搜索区 */
-.search-zone {
-    padding: 1.5rem 1rem 1rem;
-    border-bottom: 1px solid var(--border-color);
+.topnav-link,
+.topbar-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 34px;
+    padding: 0 0.9rem;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    font-size: 0.86rem;
+    color: var(--text-secondary);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
 
-.search-input-wrapper {
-    position: relative;
+.topnav-link:hover,
+.topbar-button:hover {
+    border-color: var(--line);
+    background: var(--surface);
+    color: var(--text);
 }
 
-.search-input-wrapper::before {
-    content: '🔍';
-    position: absolute;
-    left: 0.75rem;
-    top: 50%;
-    transform: translateY(-50%);
+.topnav-link.active {
+    border-color: var(--line);
+    background: var(--surface);
+    color: var(--text);
+}
+
+.page {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 1.2rem 1rem 2rem;
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 250px minmax(0, 1fr) 230px;
+    gap: 1rem;
+    align-items: start;
+}
+
+.panel {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+.sidebar {
+    position: sticky;
+    top: 76px;
+    padding: 0.95rem;
+}
+
+.panel-title {
+    margin: 0;
     font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.search-wrap {
+    margin-top: 0.75rem;
 }
 
 .search-input {
     width: 100%;
-    padding: 0.6rem 0.75rem 0.6rem 2.5rem;
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    background-color: var(--main-bg);
-    color: var(--text-color);
+    height: 38px;
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    padding: 0 0.8rem;
     font-size: 0.9rem;
-    transition: all 0.2s ease;
+    color: var(--text);
+    background: var(--surface-muted);
 }
 
 .search-input:focus {
     outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 2px rgba(107, 122, 143, 0.1);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px var(--accent-soft);
+    background: var(--surface);
 }
 
-.search-input::placeholder {
-    color: var(--text-light);
+.shortcut-hint {
+    margin: 0.45rem 0 0;
+    font-size: 0.74rem;
+    color: var(--text-secondary);
 }
 
-/* 品牌标题区 */
-.brand-zone {
-    padding: 1.5rem 1rem;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.brand-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--text-color);
-    margin-bottom: 0.25rem;
-}
-
-.brand-subtitle {
-    font-size: 0.75rem;
-    color: var(--text-light);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-/* 导航树 */
-.nav-tree {
-    flex: 1;
-    overflow-y: auto;
-    padding: 1rem 0;
-}
-
-.nav-tree ul {
-    list-style: none;
-}
-
-.nav-item {
-    margin-bottom: 0.25rem;
-}
-
-.nav-link {
-    display: block;
-    padding: 0.75rem 1rem;
-    color: var(--text-color);
-    text-decoration: none;
-    font-size: 0.95rem;
-    transition: all 0.2s ease;
-    position: relative;
-    border-left: 3px solid transparent;
-}
-
-.nav-link:hover {
-    background-color: var(--accent-blue);
-    color: var(--primary-color);
-}
-
-.nav-link.active {
-    background-color: var(--accent-blue);
-    color: var(--primary-color);
-    border-left-color: var(--primary-color);
-    font-weight: 500;
-}
-
-.nav-header {
-    display: flex;
-    align-items: center;
-    padding: 0.75rem 1rem;
-    cursor: pointer;
-    user-select: none;
-    font-weight: bold;
-    font-size: 1rem;
-    color: var(--text-color);
-    transition: all 0.2s ease;
-}
-
-.nav-header:hover {
-    background-color: var(--accent-blue);
-}
-
-.nav-header .arrow {
-    margin-right: 0.5rem;
+kbd {
+    font-family: inherit;
     font-size: 0.7rem;
-    transition: transform 0.3s ease;
-    display: inline-block;
+    border: 1px solid var(--line);
+    border-bottom-width: 2px;
+    border-radius: 5px;
+    padding: 0.05rem 0.32rem;
+    background: var(--surface-muted);
 }
 
-.nav-item.expanded > .nav-header .arrow {
-    transform: rotate(90deg);
+.category-list {
+    list-style: none;
+    margin: 0.85rem 0 0;
+    padding: 0;
+    border-top: 1px solid var(--line);
 }
 
-.nav-children {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
+.category-item {
+    margin-top: 0.55rem;
 }
 
-.nav-item.expanded > .nav-children {
-    max-height: 1000px;
-}
-
-.nav-children .nav-link {
-    padding-left: 2.5rem;
-    font-size: 0.9rem;
-    color: var(--text-light);
-}
-
-.nav-children .nav-link:hover,
-.nav-children .nav-link.active {
-    color: var(--primary-color);
-    background-color: var(--accent-blue);
-}
-
-/* 底部工具栏 */
-.sidebar-footer {
-    padding: 1rem;
-    border-top: 1px solid var(--border-color);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.github-link {
-    color: var(--text-color);
-    text-decoration: none;
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem;
-    border-radius: 6px;
-    transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.github-link:hover {
-    background-color: var(--border-color);
-    color: var(--primary-color);
-}
-
-.github-link::before {
-    content: '🔗';
-    font-size: 1rem;
-}
-
-.dark-mode-toggle {
-    width: 40px;
-    height: 40px;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    font-size: 1.5rem;
-    color: var(--text-color);
-    border-radius: 6px;
-    transition: background-color 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.dark-mode-toggle:hover {
-    background-color: var(--border-color);
-}
-
-/* ========== 右侧内容区 (Main) ========== */
-.content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    background-color: var(--main-bg);
-}
-
-/* Dashboard */
-.dashboard {
-    flex: 1;
-    overflow-y: auto;
-    padding: 3rem 2rem;
-}
-
-.dashboard-welcome {
-    margin-bottom: 3rem;
-}
-
-.dashboard-welcome h1 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-    color: var(--text-color);
-}
-
-.dashboard-welcome p {
-    font-size: 1.1rem;
-    color: var(--text-light);
-}
-
-.dashboard-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
-}
-
-.dashboard-card {
-    padding: 2rem;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: 1px solid var(--border-color);
-    position: relative;
-    overflow: hidden;
-}
-
-.dashboard-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--primary-color), var(--teal-color));
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
-}
-
-.dashboard-card:hover::before {
-    transform: scaleX(1);
-}
-
-.dashboard-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px var(--shadow);
-}
-
-.dashboard-card.recent {
-    background: linear-gradient(135deg, var(--accent-blue), rgba(227, 242, 253, 0.5));
-}
-
-.dashboard-card.timeseries {
-    background: linear-gradient(135deg, var(--accent-blue), rgba(227, 242, 253, 0.3));
-}
-
-.dashboard-card.diffusion {
-    background: linear-gradient(135deg, var(--accent-purple), rgba(243, 229, 245, 0.3));
-}
-
-.dashboard-card h3 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-    color: var(--text-color);
-}
-
-.dashboard-card p {
-    color: var(--text-light);
-    margin-bottom: 1rem;
-}
-
-.dashboard-card .count {
-    font-size: 2rem;
-    font-weight: bold;
-    color: var(--primary-color);
-}
-
-/* Content Frame */
-.content-frame {
-    flex: 1;
+.category-button {
     width: 100%;
-    border: none;
-    display: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.8rem;
+    border: 1px solid transparent;
+    background: transparent;
+    border-radius: 9px;
+    padding: 0.5rem 0.58rem;
+    font-size: 0.86rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    text-align: left;
 }
 
-.content-frame.active {
-    display: block;
+.category-button:hover {
+    border-color: var(--line);
+    background: var(--surface-muted);
+    color: var(--text);
 }
 
-.dashboard.hidden {
-    display: none;
+.category-button.active {
+    border-color: var(--line);
+    background: var(--accent-soft);
+    color: var(--text);
+    font-weight: 600;
 }
 
-/* ========== 响应式设计 ========== */
-@media screen and (max-width: 768px) {
-    .sidebar {
-        position: fixed;
-        left: 0;
-        top: 0;
-        height: 100%;
-        z-index: 1000;
-        transform: translateX(-100%);
+.category-count {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}
+
+.sidebar-footnote {
+    margin-top: 0.8rem;
+    border-top: 1px solid var(--line);
+    padding-top: 0.8rem;
+    font-size: 0.74rem;
+    color: var(--text-secondary);
+}
+
+.main-column {
+    min-width: 0;
+}
+
+.doc-header {
+    padding: 1.2rem 1.2rem 1.05rem;
+}
+
+.doc-title {
+    margin: 0;
+    font-size: clamp(1.7rem, 2.1vw, 2.2rem);
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+}
+
+.doc-description {
+    margin: 0.55rem 0 0;
+    max-width: 62ch;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.doc-meta {
+    margin-top: 0.9rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.6rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.dot {
+    color: var(--line);
+}
+
+.notes-panel {
+    margin-top: 1rem;
+    padding: 0.75rem 1rem 1rem;
+}
+
+.notes-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.4rem 0.25rem 0.6rem;
+    border-bottom: 1px solid var(--line);
+}
+
+.notes-heading {
+    margin: 0;
+    font-size: 1.05rem;
+}
+
+.notes-count {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+}
+
+.group-list {
+    margin-top: 0.4rem;
+}
+
+.note-group {
+    scroll-margin-top: 82px;
+}
+
+.group-title {
+    margin: 1rem 0 0.45rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.note-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto auto;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.62rem 0.22rem;
+    border-top: 1px solid var(--line);
+}
+
+.note-title-link {
+    font-size: 0.92rem;
+    font-weight: 500;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.note-title-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.note-tag {
+    font-size: 0.76rem;
+    color: var(--text-secondary);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.13rem 0.5rem;
+    white-space: nowrap;
+}
+
+.note-time {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+
+.note-open {
+    font-size: 0.78rem;
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    padding: 0.24rem 0.55rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+
+.note-open:hover {
+    background: var(--surface-muted);
+    color: var(--text);
+}
+
+.empty-state {
+    margin-top: 0.8rem;
+    border: 1px dashed var(--line);
+    border-radius: 10px;
+    padding: 1.3rem 0.85rem;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.86rem;
+}
+
+.right-rail {
+    position: sticky;
+    top: 76px;
+    padding: 0.92rem;
+}
+
+.rail-block + .rail-block {
+    margin-top: 1rem;
+    border-top: 1px solid var(--line);
+    padding-top: 0.9rem;
+}
+
+.rail-list {
+    list-style: none;
+    margin: 0.6rem 0 0;
+    padding: 0;
+}
+
+.rail-item + .rail-item {
+    margin-top: 0.45rem;
+}
+
+.rail-link {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+}
+
+.rail-link:hover {
+    color: var(--text);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+@media (max-width: 1140px) {
+    .layout {
+        grid-template-columns: 250px minmax(0, 1fr);
     }
 
-    .sidebar.mobile-open {
-        transform: translateX(0);
+    .right-rail {
+        display: none;
+    }
+}
+
+@media (max-width: 820px) {
+    .topbar-inner {
+        height: auto;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        align-items: flex-start;
+        flex-direction: column;
     }
 
-    .sidebar.collapsed {
-        width: 280px;
+    .page {
+        padding-top: 0.85rem;
     }
 
-    .content {
-        margin-left: 0;
-    }
-
-    .dashboard {
-        padding: 2rem 1rem;
-    }
-
-    .dashboard-welcome h1 {
-        font-size: 2rem;
-    }
-
-    .dashboard-cards {
+    .layout {
         grid-template-columns: 1fr;
     }
-}
 
-/* 滚动条样式 */
-.nav-tree::-webkit-scrollbar,
-.dashboard::-webkit-scrollbar {
-    width: 6px;
-}
+    .sidebar,
+    .right-rail {
+        position: static;
+    }
 
-.nav-tree::-webkit-scrollbar-track,
-.dashboard::-webkit-scrollbar-track {
-    background: transparent;
-}
+    .sidebar {
+        order: 1;
+    }
 
-.nav-tree::-webkit-scrollbar-thumb,
-.dashboard::-webkit-scrollbar-thumb {
-    background: var(--border-color);
-    border-radius: 3px;
-}
+    .main-column {
+        order: 2;
+    }
 
-.nav-tree::-webkit-scrollbar-thumb:hover,
-.dashboard::-webkit-scrollbar-thumb:hover {
-    background: var(--text-light);
+    .note-row {
+        grid-template-columns: 1fr;
+        gap: 0.35rem;
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+    }
+
+    .note-title-link {
+        white-space: normal;
+    }
+
+    .note-tag,
+    .note-time,
+    .note-open {
+        justify-self: start;
+    }
 }
 </style>
 </head>
 <body>
-<div class="container">
-    <!-- 左侧导航栏 -->
-    <aside class="sidebar" id="sidebar">
-        <button class="sidebar-toggle" id="sidebarToggle" aria-label="切换侧边栏">☰</button>
-        <div class="sidebar-content">
-            <!-- 搜索区 -->
-            <div class="search-zone">
-                <div class="search-input-wrapper">
-                    <input type="text" class="search-input" id="searchInput" placeholder="搜索笔记...">
-                </div>
-            </div>
-
-            <!-- 品牌标题区 -->
-            <div class="brand-zone">
-                <div class="brand-title">学习笔记</div>
-            </div>
-
-            <!-- 导航树 -->
-            <nav class="nav-tree" id="navTree">
-                <ul>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link" data-action="dashboard" id="nav-dashboard">主页</a>
-                    </li>
-                    <li class="nav-item" id="nav-timeseries">
-                        <div class="nav-header">
-                            <span class="arrow">▶</span>
-                            <span>时间序列</span>
-                        </div>
-                        <ul class="nav-children">
-                            <li><a href="./TimeSeries/Chapter1.html" class="nav-link">第一章</a></li>
-                            <li><a href="./TimeSeries/Chapter3.html" class="nav-link">第三章</a></li>
-                            <li><a href="./TimeSeries/Chapter5.html" class="nav-link">第五章</a></li>
-                            <li><a href="./TimeSeries/Chapter6.html" class="nav-link">第六章</a></li>
-                            <li><a href="./TimeSeries/Chapter7.html" class="nav-link">第七章</a></li>
-                            <li><a href="./TimeSeries/Chapter8.html" class="nav-link">第八章</a></li>
-                            <li><a href="./TimeSeries/Chapter9.html" class="nav-link">第九章</a></li>
-                            <li><a href="./TimeSeries/Chapter10.html" class="nav-link">第十章</a></li>
-                            <li><a href="./TimeSeries/Chapter11.html" class="nav-link">第十一章</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item" id="nav-diffusion">
-                        <div class="nav-header">
-                            <span class="arrow">▶</span>
-                            <span>扩散模型</span>
-                        </div>
-                        <ul class="nav-children">
-                            <li><a href="./Diffusion/变分自编码器VAE.html" class="nav-link">VAE</a></li>
-                            <li><a href="./Diffusion/Diffusion-1.html" class="nav-link">DDPM</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-
-            <!-- 底部工具栏 -->
-            <div class="sidebar-footer">
-                <a href="https://github.com/ningna01/ningna01.github.io" target="_blank" rel="noopener noreferrer" class="github-link" aria-label="GitHub 仓库">GitHub</a>
-                <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换暗黑模式">☀️</button>
-            </div>
+<header class="topbar">
+    <div class="topbar-inner">
+        <div class="brand">Ningna的学习笔记</div>
+        <nav class="topnav" aria-label="站点导航">
+            <a class="topnav-link active" href="#">主页</a>
+            <a class="topnav-link" href="#notesRoot">文档</a>
+        </nav>
+        <div class="topnav">
+            <a class="topnav-link" href="https://github.com/ningna01/ningna01.github.io" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <button class="topbar-button" id="themeToggle" type="button" aria-label="切换明暗模式">深色模式</button>
         </div>
-    </aside>
+    </div>
+</header>
 
-    <!-- 右侧内容区 -->
-    <main class="content" id="mainContent">
-        <!-- Dashboard 主页 -->
-        <div class="dashboard" id="dashboard">
-            <div class="dashboard-welcome">
-                <h1>Welcome back</h1>
+<div class="page">
+    <div class="layout">
+        <aside class="panel sidebar">
+            <h2 class="panel-title">文档目录</h2>
+            <div class="search-wrap">
+                <input class="search-input" id="searchInput" type="search" placeholder="搜索标题、分类、文件名" aria-label="搜索笔记">
+                <p class="shortcut-hint">快捷键：按 <kbd>/</kbd> 聚焦搜索，<kbd>Esc</kbd> 清空。</p>
             </div>
-            <div class="dashboard-cards">
-                <div class="dashboard-card timeseries" data-category="timeseries">
-                    <h3>时间序列分析</h3>
-                    <p>学习笔记章节</p>
-                    <div class="count">9</div>
-                </div>
-                <div class="dashboard-card diffusion" data-category="diffusion">
-                    <h3>扩散模型</h3>
-                    <p>生成式模型笔记</p>
-                    <div class="count">2</div>
-                </div>
-            </div>
-        </div>
+            <ul class="category-list" id="categoryList"></ul>
+            <div class="sidebar-footnote" id="dataStatus">正在加载索引数据...</div>
+        </aside>
 
-        <!-- 内容展示 iframe -->
-        <iframe id="contentFrame" class="content-frame" frameborder="0"></iframe>
-    </main>
+        <main class="main-column" id="notesRoot">
+            <section class="panel doc-header">
+                <h1 class="doc-title">学习笔记总览</h1>
+                <p class="doc-description">这是一个面向阅读的文档主页，不定期进行更新。</p>
+                <div class="doc-meta">
+                    <span id="metaTotal">共 0 篇</span>
+                    <span class="dot">•</span>
+                    <span id="metaCategory">0 个分类</span>
+                    <span class="dot">•</span>
+                    <span id="metaLatest">最近更新 --</span>
+                </div>
+            </section>
+
+            <section class="panel notes-panel">
+                <div class="notes-toolbar">
+                    <h2 class="notes-heading" id="notesHeading">全部笔记</h2>
+                    <span class="notes-count" id="notesCount">0 条结果</span>
+                </div>
+                <div class="group-list" id="groupList"></div>
+                <div class="empty-state" id="emptyState" hidden>没有匹配结果，请更换关键词或分类。</div>
+            </section>
+        </main>
+
+        <aside class="panel right-rail">
+            <section class="rail-block">
+                <h2 class="panel-title">本页导航</h2>
+                <ul class="rail-list" id="tocList"></ul>
+            </section>
+            <section class="rail-block">
+                <h2 class="panel-title">最近更新</h2>
+                <ul class="rail-list" id="recentList"></ul>
+            </section>
+        </aside>
+    </div>
 </div>
 
 <script>
-(function() {
+(function () {
     'use strict';
 
-    // ========== 全局变量 ==========
-    const sidebar = document.getElementById('sidebar');
-    const sidebarToggle = document.getElementById('sidebarToggle');
+    const FALLBACK_INDEX = {
+        generatedAt: '内置索引',
+        total: 12,
+        categories: [
+            { key: 'all', name: '全部', count: 12 },
+            { key: 'timeseries', name: '时间序列', count: 10 },
+            { key: 'diffusion', name: '扩散模型', count: 2 }
+        ],
+        notes: [
+            { id: 'timeseries-chaper12', title: '第12章', fileName: 'Chaper12.html', path: 'TimeSeries/Chaper12.html', category: 'timeseries', categoryName: '时间序列', updatedAt: '2026-02-15', updatedAtTs: 1771141759 },
+            { id: 'timeseries-chapter11', title: '第11章', fileName: 'Chapter11.html', path: 'TimeSeries/Chapter11.html', category: 'timeseries', categoryName: '时间序列', updatedAt: '2026-02-05', updatedAtTs: 1770285032 },
+            { id: 'diffusion-diffusion-1', title: 'Diffusion 1', fileName: 'Diffusion-1.html', path: 'Diffusion/Diffusion-1.html', category: 'diffusion', categoryName: '扩散模型', updatedAt: '2026-02-03', updatedAtTs: 1770123536 },
+            { id: 'diffusion-vae', title: '变分自编码器VAE', fileName: '变分自编码器VAE.html', path: 'Diffusion/变分自编码器VAE.html', category: 'diffusion', categoryName: '扩散模型', updatedAt: '2026-02-03', updatedAtTs: 1770122779 },
+            { id: 'timeseries-chapter9', title: '第9章', fileName: 'Chapter9.html', path: 'TimeSeries/Chapter9.html', category: 'timeseries', categoryName: '时间序列', updatedAt: '2026-02-01', updatedAtTs: 1769973437 },
+            { id: 'timeseries-chapter8', title: '第8章', fileName: 'Chapter8.html', path: 'TimeSeries/Chapter8.html', category: 'timeseries', categoryName: '时间序列', updatedAt: '2026-02-01', updatedAtTs: 1769973433 },
+            { id: 'timeseries-chapter7', title: '第7章', fileName: 'Chapter7.html', path: 'TimeSeries/Chapter7.html', category: 'timeseries', categoryName: '时间序列', updatedAt: '2026-02-01', updatedAtTs: 1769973428 },
+            { id: 'timeseries-chapter6', title: '第6章', fileName: 'Chapter6.html', path: 'TimeSeries/Chapter6.html', category: 'timeseries', categoryName: '时间序列', updatedAt: '2026-02-01', updatedAtTs: 1769973144 },
+            { id: 'timeseries-chapter5', title: '第5章', fileName: 'Chapter5.html', path: 'TimeSeries/Chapter5.html', category: 'timeseries', categoryName: '时间序列', updatedAt: '2026-02-01', updatedAtTs: 1769972409 },
+            { id: 'timeseries-chapter3', title: '第3章', fileName: 'Chapter3.html', path: 'TimeSeries/Chapter3.html', category: 'timeseries', categoryName: '时间序列', updatedAt: '2026-02-01', updatedAtTs: 1769972176 },
+            { id: 'timeseries-chapter1', title: '第1章', fileName: 'Chapter1.html', path: 'TimeSeries/Chapter1.html', category: 'timeseries', categoryName: '时间序列', updatedAt: '2026-02-01', updatedAtTs: 1769971641 },
+            { id: 'timeseries-chapter10', title: '第10章', fileName: 'Chapter10.html', path: 'TimeSeries/Chapter10.html', category: 'timeseries', categoryName: '时间序列', updatedAt: '2026-02-01', updatedAtTs: 1769971091 }
+        ]
+    };
+
+    const state = {
+        activeCategory: 'all',
+        keyword: '',
+        categories: [],
+        notes: []
+    };
+
+    const categoryList = document.getElementById('categoryList');
     const searchInput = document.getElementById('searchInput');
-    const navTree = document.getElementById('navTree');
-    const dashboard = document.getElementById('dashboard');
-    const contentFrame = document.getElementById('contentFrame');
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    const navLinks = document.querySelectorAll('.nav-link');
-    const navHeaders = document.querySelectorAll('.nav-header');
-    const dashboardCards = document.querySelectorAll('.dashboard-card');
+    const dataStatus = document.getElementById('dataStatus');
+    const metaTotal = document.getElementById('metaTotal');
+    const metaCategory = document.getElementById('metaCategory');
+    const metaLatest = document.getElementById('metaLatest');
+    const notesHeading = document.getElementById('notesHeading');
+    const notesCount = document.getElementById('notesCount');
+    const groupList = document.getElementById('groupList');
+    const emptyState = document.getElementById('emptyState');
+    const tocList = document.getElementById('tocList');
+    const recentList = document.getElementById('recentList');
+    const themeToggle = document.getElementById('themeToggle');
 
-    // ========== 侧边栏折叠/展开 ==========
-    function toggleSidebar() {
-        sidebar.classList.toggle('collapsed');
-        // 保存状态到 localStorage
-        localStorage.setItem('sidebarCollapsed', sidebar.classList.contains('collapsed'));
+    function escapeHtml(value) {
+        return String(value)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
     }
 
-    sidebarToggle.addEventListener('click', function(e) {
-        e.stopPropagation();
-        toggleSidebar();
-    });
-
-    // 恢复侧边栏状态
-    if (localStorage.getItem('sidebarCollapsed') === 'true') {
-        sidebar.classList.add('collapsed');
+    function safeUrl(path) {
+        return './' + encodeURI(String(path)).replace(/#/g, '%23');
     }
 
-    // ========== 菜单折叠/展开 ==========
-    function toggleMenu(navItem) {
-        navItem.classList.toggle('expanded');
-        // 保存展开状态
-        const categoryId = navItem.id;
-        const isExpanded = navItem.classList.contains('expanded');
-        const expandedMenus = JSON.parse(localStorage.getItem('expandedMenus') || '[]');
-        if (isExpanded) {
-            if (!expandedMenus.includes(categoryId)) {
-                expandedMenus.push(categoryId);
+    function normalizeDate(text) {
+        return String(text || '--').replace(/-/g, '.');
+    }
+
+    function categoryNameOf(key) {
+        const found = state.categories.find((item) => item.key === key);
+        return found ? found.name : key;
+    }
+
+    function chapterNumberOf(note) {
+        const sources = [note.fileName, note.path, note.title];
+        for (const source of sources) {
+            const text = String(source || '');
+            let match = text.match(/chap(?:ter|er)(\d+)/i);
+            if (match) {
+                return Number(match[1]);
             }
-        } else {
-            const index = expandedMenus.indexOf(categoryId);
-            if (index > -1) {
-                expandedMenus.splice(index, 1);
+            match = text.match(/第\s*(\d+)\s*章/);
+            if (match) {
+                return Number(match[1]);
             }
         }
-        localStorage.setItem('expandedMenus', JSON.stringify(expandedMenus));
+        return null;
     }
 
-    navHeaders.forEach(header => {
-        header.addEventListener('click', function() {
-            const navItem = this.parentElement;
-            toggleMenu(navItem);
+    function sortByChapterDescending(notes) {
+        return notes.slice().sort((a, b) => {
+            const aNum = chapterNumberOf(a);
+            const bNum = chapterNumberOf(b);
+
+            if (aNum != null && bNum != null) {
+                return bNum - aNum;
+            }
+            if (aNum != null) {
+                return -1;
+            }
+            if (bNum != null) {
+                return 1;
+            }
+            return String(a.title).localeCompare(String(b.title), 'zh-Hans-CN');
         });
-    });
-
-    // 恢复菜单展开状态
-    const expandedMenus = JSON.parse(localStorage.getItem('expandedMenus') || '[]');
-    expandedMenus.forEach(menuId => {
-        const menu = document.getElementById(menuId);
-        if (menu) {
-            menu.classList.add('expanded');
-        }
-    });
-
-    // ========== 内容加载 ==========
-    function loadContent(url) {
-        if (!url || url === '#' || url === 'javascript:void(0)') {
-            showDashboard();
-            return;
-        }
-
-        dashboard.classList.add('hidden');
-        contentFrame.classList.add('active');
-        contentFrame.src = url;
     }
 
-    function showDashboard() {
-        dashboard.classList.remove('hidden');
-        contentFrame.classList.remove('active');
-        contentFrame.src = '';
-    }
-
-    // ========== 导航链接点击 ==========
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const url = this.getAttribute('href');
-            const action = this.getAttribute('data-action');
-
-            // 移除所有 active 状态
-            navLinks.forEach(l => l.classList.remove('active'));
-            // 添加当前 active 状态
-            this.classList.add('active');
-
-            if (action === 'dashboard') {
-                showDashboard();
-            } else if (url) {
-                loadContent(url);
+    function sortByUpdatedDesc(notes) {
+        return notes.slice().sort((a, b) => {
+            const timeDelta = (b.updatedAtTs || 0) - (a.updatedAtTs || 0);
+            if (timeDelta !== 0) {
+                return timeDelta;
             }
+            return String(a.title).localeCompare(String(b.title), 'zh-Hans-CN');
         });
-    });
+    }
 
-    // ========== Dashboard 卡片点击 ==========
-    dashboardCards.forEach(card => {
-        card.addEventListener('click', function() {
-            const action = this.getAttribute('data-action');
-            const category = this.getAttribute('data-category');
+    function hasChapterNotes(notes) {
+        return notes.some((note) => chapterNumberOf(note) != null);
+    }
 
-            if (action === 'dashboard') {
-                showDashboard();
-                navLinks.forEach(l => {
-                    if (l.getAttribute('data-action') === 'dashboard') {
-                        l.classList.add('active');
-                    } else {
-                        l.classList.remove('active');
-                    }
+    function sortNotesForCategory(categoryKey, notes) {
+        if (!notes.length) {
+            return [];
+        }
+
+        const newest = sortByUpdatedDesc(notes)[0];
+        const rest = notes.filter((note) => note.id !== newest.id);
+        const sortedRest = hasChapterNotes(rest)
+            ? sortByChapterDescending(rest)
+            : sortByUpdatedDesc(rest);
+        return [newest].concat(sortedRest);
+    }
+
+    function renderMeta() {
+        const total = state.notes.length;
+        const categories = state.categories.filter((item) => item.key !== 'all').length;
+        const latest = total ? normalizeDate(state.notes[0].updatedAt) : '--';
+
+        metaTotal.textContent = '共 ' + total + ' 篇';
+        metaCategory.textContent = categories + ' 个分类';
+        metaLatest.textContent = '最近更新 ' + latest;
+    }
+
+    function filteredNotes() {
+        const keyword = state.keyword.trim().toLowerCase();
+
+        return state.notes.filter((note) => {
+            const categoryMatch = state.activeCategory === 'all' || note.category === state.activeCategory;
+            if (!categoryMatch) {
+                return false;
+            }
+
+            if (!keyword) {
+                return true;
+            }
+
+            const text = [note.title, note.fileName, note.path, note.categoryName].join(' ').toLowerCase();
+            return text.includes(keyword);
+        });
+    }
+
+    function groupedByCategory(notes) {
+        if (state.activeCategory !== 'all') {
+            return [{
+                key: state.activeCategory,
+                name: categoryNameOf(state.activeCategory),
+                notes: sortNotesForCategory(state.activeCategory, notes)
+            }];
+        }
+
+        const groups = [];
+        const byKey = new Map();
+
+        notes.forEach((note) => {
+            const key = note.category;
+            if (!byKey.has(key)) {
+                byKey.set(key, []);
+            }
+            byKey.get(key).push(note);
+        });
+
+        state.categories.forEach((category) => {
+            if (category.key === 'all') {
+                return;
+            }
+            const groupNotes = byKey.get(category.key) || [];
+            if (groupNotes.length) {
+                groups.push({
+                    key: category.key,
+                    name: category.name,
+                    notes: sortNotesForCategory(category.key, groupNotes)
                 });
-            } else if (category) {
-                // 展开对应分类并高亮第一个链接
-                const navItem = document.getElementById('nav-' + category);
-                if (navItem) {
-                    navItem.classList.add('expanded');
-                    const firstLink = navItem.querySelector('.nav-children .nav-link');
-                    if (firstLink) {
-                        navLinks.forEach(l => l.classList.remove('active'));
-                        firstLink.classList.add('active');
-                        loadContent(firstLink.getAttribute('href'));
-                    }
-                }
             }
         });
-    });
 
-    // ========== 搜索过滤 ==========
-    function filterNavigation(keyword) {
-        const keywordLower = keyword.toLowerCase().trim();
-        const allNavItems = document.querySelectorAll('.nav-item');
-        const allLinks = document.querySelectorAll('.nav-link');
+        return groups;
+    }
 
-        if (!keywordLower) {
-            // 清空搜索，显示所有项
-            allNavItems.forEach(item => {
-                item.style.display = '';
+    function renderCategoryList() {
+        categoryList.innerHTML = state.categories.map((category) => {
+            const activeClass = category.key === state.activeCategory ? 'category-button active' : 'category-button';
+            return '<li class="category-item">' +
+                '<button type="button" class="' + activeClass + '" data-category="' + escapeHtml(category.key) + '">' +
+                '<span>' + escapeHtml(category.name) + '</span>' +
+                '<span class="category-count">' + category.count + '</span>' +
+                '</button>' +
+                '</li>';
+        }).join('');
+
+        categoryList.querySelectorAll('.category-button').forEach((button) => {
+            button.addEventListener('click', () => {
+                state.activeCategory = button.dataset.category || 'all';
+                renderCategoryList();
+                renderGroups();
             });
-            allLinks.forEach(link => {
-                link.style.display = '';
-            });
+        });
+    }
+
+    function renderGroups() {
+        const notes = filteredNotes();
+        const groups = groupedByCategory(notes);
+
+        notesHeading.textContent = state.activeCategory === 'all'
+            ? '全部笔记'
+            : (categoryNameOf(state.activeCategory) + ' 笔记');
+        notesCount.textContent = notes.length + ' 条结果';
+
+        if (!notes.length) {
+            groupList.innerHTML = '';
+            tocList.innerHTML = '';
+            emptyState.hidden = false;
             return;
         }
 
-        // 隐藏所有项，然后显示匹配的
-        allNavItems.forEach(item => {
-            const header = item.querySelector('.nav-header');
-            const links = item.querySelectorAll('.nav-link');
-            let hasMatch = false;
+        emptyState.hidden = true;
 
-            // 检查一级菜单标题
-            if (header) {
-                const headerText = header.textContent.toLowerCase();
-                if (headerText.includes(keywordLower)) {
-                    hasMatch = true;
-                }
-            }
+        groupList.innerHTML = groups.map((group) => {
+            return '<section class="note-group" id="group-' + escapeHtml(group.key) + '">' +
+                '<h3 class="group-title">' + escapeHtml(group.name) + ' (' + group.notes.length + ')</h3>' +
+                group.notes.map((note) => {
+                    return '<article class="note-row">' +
+                        '<a class="note-title-link" href="' + escapeHtml(safeUrl(note.path)) + '" target="_blank" rel="noopener noreferrer" title="' + escapeHtml(note.title) + '">' + escapeHtml(note.title) + '</a>' +
+                        '<span class="note-tag">' + escapeHtml(note.categoryName) + '</span>' +
+                        '<time class="note-time" datetime="' + escapeHtml(note.updatedAt) + '">' + escapeHtml(normalizeDate(note.updatedAt)) + '</time>' +
+                        '<a class="note-open" href="' + escapeHtml(safeUrl(note.path)) + '" target="_blank" rel="noopener noreferrer">新标签页打开</a>' +
+                        '</article>';
+                }).join('') +
+                '</section>';
+        }).join('');
 
-            // 检查二级菜单链接
-            links.forEach(link => {
-                const linkText = link.textContent.toLowerCase();
-                if (linkText.includes(keywordLower)) {
-                    hasMatch = true;
-                    link.style.display = '';
-                } else {
-                    link.style.display = 'none';
-                }
-            });
+        tocList.innerHTML = groups.map((group) => {
+            return '<li class="rail-item"><a class="rail-link" href="#group-' + escapeHtml(group.key) + '">' + escapeHtml(group.name) + '</a></li>';
+        }).join('');
+    }
 
-            // 如果有匹配项，显示该项并展开
-            if (hasMatch) {
-                item.style.display = '';
-                item.classList.add('expanded');
-            } else {
-                // 检查是否是完全隐藏的项（没有子菜单的）
-                if (!header && links.length === 0) {
-                    item.style.display = 'none';
-                } else if (header && links.length === 0) {
-                    item.style.display = 'none';
-                }
-            }
+    function renderRecent() {
+        const recent = state.notes.slice(0, 5);
+        recentList.innerHTML = recent.map((note) => {
+            return '<li class="rail-item"><a class="rail-link" href="' + escapeHtml(safeUrl(note.path)) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(note.title) + '</a></li>';
+        }).join('');
+    }
+
+    function applyTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        themeToggle.textContent = theme === 'dark' ? '浅色模式' : '深色模式';
+    }
+
+    function initTheme() {
+        const saved = localStorage.getItem('blog-theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = saved || (prefersDark ? 'dark' : 'light');
+        applyTheme(theme);
+
+        themeToggle.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-theme') || 'light';
+            const next = current === 'dark' ? 'light' : 'dark';
+            applyTheme(next);
+            localStorage.setItem('blog-theme', next);
         });
     }
 
-    searchInput.addEventListener('input', function() {
-        filterNavigation(this.value);
-    });
-
-    // ========== 暗黑模式 ==========
-    // 注入暗黑模式样式到 iframe
-    function injectDarkModeStyles(iframeDoc) {
-        if (!iframeDoc.getElementById('dark-mode-styles')) {
-            const style = iframeDoc.createElement('style');
-            style.id = 'dark-mode-styles';
-            style.textContent = `
-                body.dark-mode {
-                    --bg-color: #121212;
-                    --text-color: #E0E0E0;
-                    --select-text-bg-color: #4A5568;
-                    --select-text-font-color: #E0E0E0;
-                }
-                body.dark-mode html {
-                    background-color: var(--bg-color);
-                    color: var(--text-color);
-                }
-                body.dark-mode #write {
-                    color: var(--text-color);
-                }
-                body.dark-mode sup.md-footnote {
-                    background-color: rgba(60, 60, 60, 0.7);
-                    color: #B0B0B0;
-                }
-                body.dark-mode .md-blockmeta {
-                    color: #888888;
-                }
-            `;
-            iframeDoc.head.appendChild(style);
-        }
-    }
-
-    // 同步暗黑模式到 iframe 中的笔记页面
-    function syncDarkModeToIframe(isDark) {
+    async function loadIndex() {
         try {
-            if (contentFrame && contentFrame.contentDocument && contentFrame.contentDocument.body) {
-                const iframeDoc = contentFrame.contentDocument;
-                // 注入暗黑模式样式
-                injectDarkModeStyles(iframeDoc);
-                // 切换暗黑模式类
-                if (isDark) {
-                    iframeDoc.body.classList.add('dark-mode');
-                } else {
-                    iframeDoc.body.classList.remove('dark-mode');
-                }
+            const response = await fetch('./data/notes.json', { cache: 'no-store' });
+            if (!response.ok) {
+                throw new Error('failed to fetch notes index');
             }
-        } catch (e) {
-            // 跨域限制或其他错误，忽略
-            console.debug('无法同步暗黑模式到 iframe:', e.message);
+            const payload = await response.json();
+            if (!payload || !Array.isArray(payload.notes) || !Array.isArray(payload.categories)) {
+                throw new Error('invalid notes index payload');
+            }
+            return payload;
+        } catch (error) {
+            return FALLBACK_INDEX;
         }
     }
 
-    function toggleDarkMode() {
-        document.body.classList.toggle('dark-mode');
-        const isDark = document.body.classList.contains('dark-mode');
-        localStorage.setItem('darkMode', isDark);
-        darkModeToggle.textContent = isDark ? '🌙' : '☀️';
-        
-        // 同步到 iframe 中的笔记页面
-        syncDarkModeToIframe(isDark);
-    }
+    function bindSearchShortcuts() {
+        searchInput.addEventListener('input', () => {
+            state.keyword = searchInput.value;
+            renderGroups();
+        });
 
-    darkModeToggle.addEventListener('click', toggleDarkMode);
+        document.addEventListener('keydown', (event) => {
+            const target = event.target;
+            const isTyping = target && (
+                target.tagName === 'INPUT' ||
+                target.tagName === 'TEXTAREA' ||
+                target.isContentEditable
+            );
 
-    // 恢复暗黑模式状态
-    const savedDarkMode = localStorage.getItem('darkMode') === 'true';
-    if (savedDarkMode) {
-        document.body.classList.add('dark-mode');
-        darkModeToggle.textContent = '🌙';
-    }
+            if (event.key === '/' && !isTyping) {
+                event.preventDefault();
+                searchInput.focus();
+                searchInput.select();
+            }
 
-    // iframe 加载完成后同步暗黑模式
-    contentFrame.addEventListener('load', function() {
-        syncDarkModeToIframe(savedDarkMode);
-    });
-
-    // ========== 移动端适配 ==========
-    if (window.innerWidth <= 768) {
-        // 移动端：点击内容区关闭侧边栏
-        document.getElementById('mainContent').addEventListener('click', function() {
-            if (sidebar.classList.contains('mobile-open')) {
-                sidebar.classList.remove('mobile-open');
+            if (event.key === 'Escape' && document.activeElement === searchInput && searchInput.value) {
+                searchInput.value = '';
+                state.keyword = '';
+                renderGroups();
             }
         });
-
-        // 移动端：点击侧边栏切换按钮
-        sidebarToggle.addEventListener('click', function() {
-            sidebar.classList.toggle('mobile-open');
-        });
     }
+
+    async function init() {
+        initTheme();
+
+        const payload = await loadIndex();
+        state.notes = payload.notes.slice().sort((a, b) => (b.updatedAtTs || 0) - (a.updatedAtTs || 0));
+        state.categories = payload.categories;
+
+        renderMeta();
+        renderCategoryList();
+        renderGroups();
+        renderRecent();
+
+        const generatedAt = payload.generatedAt ? String(payload.generatedAt) : '--';
+        dataStatus.textContent = '索引更新时间：' + generatedAt;
+
+        bindSearchShortcuts();
+    }
+
+    init();
 })();
 </script>
 </body>
