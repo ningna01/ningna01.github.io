@@ -1,24 +1,49 @@
 {
-  "generatedAt": "2026-02-15 10:43:43 +0200",
-  "total": 12,
+  "generatedAt": "2026-02-27 15:31:01 +0200",
+  "total": 14,
   "categories": [
     {
       "key": "all",
       "name": "全部",
-      "count": 12
+      "count": 14
     },
     {
       "key": "timeseries",
       "name": "时间序列",
-      "count": 10
+      "count": 11
     },
     {
       "key": "diffusion",
       "name": "扩散模型",
       "count": 2
+    },
+    {
+      "key": "signalprocessing",
+      "name": "Signal Processing",
+      "count": 1
     }
   ],
   "notes": [
+    {
+      "id": "signalprocessing-kalman-filter",
+      "title": "Kalman Filter",
+      "fileName": "Kalman Filter.html",
+      "path": "SignalProcessing/Kalman Filter.html",
+      "category": "signalprocessing",
+      "categoryName": "Signal Processing",
+      "updatedAt": "2026-02-27",
+      "updatedAtTs": 1772198852
+    },
+    {
+      "id": "timeseries-chapter13",
+      "title": "第13章",
+      "fileName": "Chapter13.html",
+      "path": "TimeSeries/Chapter13.html",
+      "category": "timeseries",
+      "categoryName": "时间序列",
+      "updatedAt": "2026-02-27",
+      "updatedAtTs": 1772195700
+    },
     {
       "id": "timeseries-chaper12",
       "title": "第12章",
