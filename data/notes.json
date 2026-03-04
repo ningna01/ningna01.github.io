@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-02-27 15:31:01 +0200",
-  "total": 14,
+  "generatedAt": "2026-03-04 14:48:42 +0200",
+  "total": 15,
   "categories": [
     {
       "key": "all",
       "name": "全部",
-      "count": 14
+      "count": 15
     },
     {
       "key": "timeseries",
@@ -18,6 +18,11 @@
       "count": 2
     },
     {
+      "key": "stochasticprocesses",
+      "name": "随机过程",
+      "count": 1
+    },
+    {
       "key": "signalprocessing",
       "name": "Signal Processing",
       "count": 1
@@ -25,17 +30,27 @@
   ],
   "notes": [
     {
-      "id": "signalprocessing-kalman-filter",
+      "id": "stochasticprocesses-1-pdf",
+      "title": "1 随机过程导论",
+      "fileName": "1-随机过程导论.pdf",
+      "path": "StochasticProcesses/1-随机过程导论.pdf",
+      "category": "stochasticprocesses",
+      "categoryName": "随机过程",
+      "updatedAt": "2026-03-04",
+      "updatedAtTs": 1772618416
+    },
+    {
+      "id": "signalprocessing-kalman-filter-html",
       "title": "Kalman Filter",
       "fileName": "Kalman Filter.html",
       "path": "SignalProcessing/Kalman Filter.html",
       "category": "signalprocessing",
       "categoryName": "Signal Processing",
       "updatedAt": "2026-02-27",
-      "updatedAtTs": 1772198852
+      "updatedAtTs": 1772199291
     },
     {
-      "id": "timeseries-chapter13",
+      "id": "timeseries-chapter13-html",
       "title": "第13章",
       "fileName": "Chapter13.html",
       "path": "TimeSeries/Chapter13.html",
@@ -45,7 +60,7 @@
       "updatedAtTs": 1772195700
     },
     {
-      "id": "timeseries-chaper12",
+      "id": "timeseries-chaper12-html",
       "title": "第12章",
       "fileName": "Chaper12.html",
       "path": "TimeSeries/Chaper12.html",
@@ -55,7 +70,7 @@
       "updatedAtTs": 1771141759
     },
     {
-      "id": "timeseries-chapter11",
+      "id": "timeseries-chapter11-html",
       "title": "第11章",
       "fileName": "Chapter11.html",
       "path": "TimeSeries/Chapter11.html",
@@ -65,7 +80,7 @@
       "updatedAtTs": 1770285032
     },
     {
-      "id": "diffusion-diffusion-1",
+      "id": "diffusion-diffusion-1-html",
       "title": "Diffusion 1",
       "fileName": "Diffusion-1.html",
       "path": "Diffusion/Diffusion-1.html",
@@ -75,7 +90,7 @@
       "updatedAtTs": 1770123536
     },
     {
-      "id": "diffusion-vae",
+      "id": "diffusion-vae-html",
       "title": "变分自编码器VAE",
       "fileName": "变分自编码器VAE.html",
       "path": "Diffusion/变分自编码器VAE.html",
@@ -85,7 +100,7 @@
       "updatedAtTs": 1770122779
     },
     {
-      "id": "timeseries-chapter9",
+      "id": "timeseries-chapter9-html",
       "title": "第9章",
       "fileName": "Chapter9.html",
       "path": "TimeSeries/Chapter9.html",
@@ -95,7 +110,7 @@
       "updatedAtTs": 1769973437
     },
     {
-      "id": "timeseries-chapter8",
+      "id": "timeseries-chapter8-html",
       "title": "第8章",
       "fileName": "Chapter8.html",
       "path": "TimeSeries/Chapter8.html",
@@ -105,7 +120,7 @@
       "updatedAtTs": 1769973433
     },
     {
-      "id": "timeseries-chapter7",
+      "id": "timeseries-chapter7-html",
       "title": "第7章",
       "fileName": "Chapter7.html",
       "path": "TimeSeries/Chapter7.html",
@@ -115,7 +130,7 @@
       "updatedAtTs": 1769973428
     },
     {
-      "id": "timeseries-chapter6",
+      "id": "timeseries-chapter6-html",
       "title": "第6章",
       "fileName": "Chapter6.html",
       "path": "TimeSeries/Chapter6.html",
@@ -125,7 +140,7 @@
       "updatedAtTs": 1769973144
     },
     {
-      "id": "timeseries-chapter5",
+      "id": "timeseries-chapter5-html",
       "title": "第5章",
       "fileName": "Chapter5.html",
       "path": "TimeSeries/Chapter5.html",
@@ -135,7 +150,7 @@
       "updatedAtTs": 1769972409
     },
     {
-      "id": "timeseries-chapter3",
+      "id": "timeseries-chapter3-html",
       "title": "第3章",
       "fileName": "Chapter3.html",
       "path": "TimeSeries/Chapter3.html",
@@ -145,7 +160,7 @@
       "updatedAtTs": 1769972176
     },
     {
-      "id": "timeseries-chapter1",
+      "id": "timeseries-chapter1-html",
       "title": "第1章",
       "fileName": "Chapter1.html",
       "path": "TimeSeries/Chapter1.html",
@@ -155,7 +170,7 @@
       "updatedAtTs": 1769971641
     },
     {
-      "id": "timeseries-chapter10",
+      "id": "timeseries-chapter10-html",
       "title": "第10章",
       "fileName": "Chapter10.html",
       "path": "TimeSeries/Chapter10.html",

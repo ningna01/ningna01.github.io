@@ -14,6 +14,7 @@ CATEGORY_NAME_OVERRIDES = {
     "Diffusion": "扩散模型",
     "RandomProcess": "随机过程",
     "StochasticProcess": "随机过程",
+    "StochasticProcesses": "随机过程",
 }
 
 CATEGORY_ORDER_HINTS = [
@@ -21,6 +22,7 @@ CATEGORY_ORDER_HINTS = [
     "diffusion",
     "randomprocess",
     "stochasticprocess",
+    "stochasticprocesses",
 ]
 
 IGNORED_DIRS = {
@@ -30,6 +32,8 @@ IGNORED_DIRS = {
     "data",
     "scripts",
 }
+
+SUPPORTED_NOTE_EXTENSIONS = {".html", ".pdf"}
 
 
 def pretty_title(stem: str) -> str:
@@ -64,6 +68,15 @@ def prettify_category_name(name: str) -> str:
     return with_spaces or name
 
 
+def list_note_files(directory: Path) -> list[Path]:
+    files = [
+        file
+        for file in directory.iterdir()
+        if file.is_file() and file.suffix.lower() in SUPPORTED_NOTE_EXTENSIONS
+    ]
+    return sorted(files, key=lambda item: item.name.lower())
+
+
 def discover_categories(root: Path) -> list[tuple[str, str, Path]]:
     discovered: list[tuple[str, str, Path]] = []
     used_keys: set[str] = set()
@@ -74,8 +87,8 @@ def discover_categories(root: Path) -> list[tuple[str, str, Path]]:
         if directory.name.startswith(".") or directory.name in IGNORED_DIRS:
             continue
 
-        html_files = list(directory.glob("*.html"))
-        if not html_files:
+        note_files = list_note_files(directory)
+        if not note_files:
             continue
 
         base_key = slugify_category_key(directory.name)
@@ -98,15 +111,16 @@ def discover_categories(root: Path) -> list[tuple[str, str, Path]]:
     return discovered
 
 
-def build_note(root: Path, html_file: Path, category_key: str, category_name: str) -> dict[str, object]:
-    mtime = datetime.fromtimestamp(html_file.stat().st_mtime).astimezone()
-    relative_path = html_file.relative_to(root).as_posix()
-    safe_id = re.sub(r"[^a-z0-9]+", "-", f"{category_key}-{html_file.stem.lower()}").strip("-")
+def build_note(root: Path, note_file: Path, category_key: str, category_name: str) -> dict[str, object]:
+    mtime = datetime.fromtimestamp(note_file.stat().st_mtime).astimezone()
+    relative_path = note_file.relative_to(root).as_posix()
+    extension = note_file.suffix.lower().lstrip(".") or "file"
+    safe_id = re.sub(r"[^a-z0-9]+", "-", f"{category_key}-{note_file.stem.lower()}-{extension}").strip("-")
 
     return {
         "id": safe_id,
-        "title": pretty_title(html_file.stem),
-        "fileName": html_file.name,
+        "title": pretty_title(note_file.stem),
+        "fileName": note_file.name,
         "path": relative_path,
         "category": category_key,
         "categoryName": category_name,
@@ -121,12 +135,12 @@ def gather_notes(root: Path) -> dict[str, object]:
     categories_meta: list[tuple[str, str]] = []
 
     for category_key, category_name, target_dir in discover_categories(root):
-        html_files = sorted(target_dir.glob("*.html"))
-        counts[category_key] = len(html_files)
+        note_files = list_note_files(target_dir)
+        counts[category_key] = len(note_files)
         categories_meta.append((category_key, category_name))
 
-        for html_file in html_files:
-            notes.append(build_note(root, html_file, category_key, category_name))
+        for note_file in note_files:
+            notes.append(build_note(root, note_file, category_key, category_name))
 
     notes.sort(key=lambda item: (item["updatedAtTs"], str(item["title"])), reverse=True)
 
