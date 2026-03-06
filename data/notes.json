@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-03-06 10:58:48 +0200",
-  "total": 17,
+  "generatedAt": "2026-03-06 16:03:25 +0200",
+  "total": 19,
   "categories": [
     {
       "key": "all",
       "name": "全部",
-      "count": 17
+      "count": 19
     },
     {
       "key": "timeseries",
@@ -23,12 +23,37 @@
       "count": 3
     },
     {
+      "key": "deeplearning",
+      "name": "Deep Learning",
+      "count": 2
+    },
+    {
       "key": "signalprocessing",
       "name": "Signal Processing",
       "count": 1
     }
   ],
   "notes": [
+    {
+      "id": "deeplearning-chapter-2-basics-of-neural-network-programming-html",
+      "title": "Chapter 2——Basics of Neural Network Programming",
+      "fileName": "Chapter 2——Basics of Neural Network Programming.html",
+      "path": "DeepLearning/Chapter 2——Basics of Neural Network Programming.html",
+      "category": "deeplearning",
+      "categoryName": "Deep Learning",
+      "updatedAt": "2026-03-06",
+      "updatedAtTs": 1772805776
+    },
+    {
+      "id": "deeplearning-chapter-1-introduction-to-deep-learning-html",
+      "title": "Chapter 1——Introduction to Deep Learning",
+      "fileName": "Chapter 1——Introduction to Deep Learning.html",
+      "path": "DeepLearning/Chapter 1——Introduction to Deep Learning.html",
+      "category": "deeplearning",
+      "categoryName": "Deep Learning",
+      "updatedAt": "2026-03-06",
+      "updatedAtTs": 1772805741
+    },
     {
       "id": "stochasticprocesses-3-pdf",
       "title": "3 多元相关",
