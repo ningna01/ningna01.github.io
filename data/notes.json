@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-03-06 16:03:25 +0200",
-  "total": 19,
+  "generatedAt": "2026-03-06 16:13:01 +0200",
+  "total": 28,
   "categories": [
     {
       "key": "all",
       "name": "全部",
-      "count": 19
+      "count": 28
     },
     {
       "key": "timeseries",
@@ -25,7 +25,7 @@
     {
       "key": "deeplearning",
       "name": "Deep Learning",
-      "count": 2
+      "count": 11
     },
     {
       "key": "signalprocessing",
@@ -34,6 +34,96 @@
     }
   ],
   "notes": [
+    {
+      "id": "deeplearning-chapter-11-object-detection-html",
+      "title": "Chapter 11——Object Detection",
+      "fileName": "Chapter 11——Object Detection.html",
+      "path": "DeepLearning/Chapter 11——Object Detection.html",
+      "category": "deeplearning",
+      "categoryName": "Deep Learning",
+      "updatedAt": "2026-03-06",
+      "updatedAtTs": 1772806159
+    },
+    {
+      "id": "deeplearning-chapter-10-classic-networks-html",
+      "title": "Chapter 10——Classic Networks",
+      "fileName": "Chapter 10——Classic Networks.html",
+      "path": "DeepLearning/Chapter 10——Classic Networks.html",
+      "category": "deeplearning",
+      "categoryName": "Deep Learning",
+      "updatedAt": "2026-03-06",
+      "updatedAtTs": 1772806144
+    },
+    {
+      "id": "deeplearning-chapter-9-convolutional-neural-networks-html",
+      "title": "Chapter 9——Convolutional Neural Networks",
+      "fileName": "Chapter 9——Convolutional Neural Networks.html",
+      "path": "DeepLearning/Chapter 9——Convolutional Neural Networks.html",
+      "category": "deeplearning",
+      "categoryName": "Deep Learning",
+      "updatedAt": "2026-03-06",
+      "updatedAtTs": 1772806126
+    },
+    {
+      "id": "deeplearning-chapter-8-introduction-to-ml-strategy-html",
+      "title": "Chapter 8——Introduction to ML strategy",
+      "fileName": "Chapter 8——Introduction to ML strategy.html",
+      "path": "DeepLearning/Chapter 8——Introduction to ML strategy.html",
+      "category": "deeplearning",
+      "categoryName": "Deep Learning",
+      "updatedAt": "2026-03-06",
+      "updatedAtTs": 1772806108
+    },
+    {
+      "id": "deeplearning-chapter-7-hyperparameter-tuning-html",
+      "title": "Chapter 7——Hyperparameter tuning",
+      "fileName": "Chapter 7——Hyperparameter tuning.html",
+      "path": "DeepLearning/Chapter 7——Hyperparameter tuning.html",
+      "category": "deeplearning",
+      "categoryName": "Deep Learning",
+      "updatedAt": "2026-03-06",
+      "updatedAtTs": 1772806092
+    },
+    {
+      "id": "deeplearning-chapter-6-optimization-algorithms-html",
+      "title": "Chapter 6——Optimization Algorithms",
+      "fileName": "Chapter 6——Optimization Algorithms.html",
+      "path": "DeepLearning/Chapter 6——Optimization Algorithms.html",
+      "category": "deeplearning",
+      "categoryName": "Deep Learning",
+      "updatedAt": "2026-03-06",
+      "updatedAtTs": 1772806074
+    },
+    {
+      "id": "deeplearning-chapter-5-setting-up-your-ml-application-html",
+      "title": "Chapter 5——Setting up your ML application",
+      "fileName": "Chapter 5——Setting up your ML application.html",
+      "path": "DeepLearning/Chapter 5——Setting up your ML application.html",
+      "category": "deeplearning",
+      "categoryName": "Deep Learning",
+      "updatedAt": "2026-03-06",
+      "updatedAtTs": 1772806056
+    },
+    {
+      "id": "deeplearning-chapter-4-deep-neural-networks-html",
+      "title": "Chapter 4——Deep Neural Networks",
+      "fileName": "Chapter 4——Deep Neural Networks.html",
+      "path": "DeepLearning/Chapter 4——Deep Neural Networks.html",
+      "category": "deeplearning",
+      "categoryName": "Deep Learning",
+      "updatedAt": "2026-03-06",
+      "updatedAtTs": 1772806037
+    },
+    {
+      "id": "deeplearning-chapter-3-neural-network-html",
+      "title": "Chapter 3——Neural Network",
+      "fileName": "Chapter 3——Neural Network.html",
+      "path": "DeepLearning/Chapter 3——Neural Network.html",
+      "category": "deeplearning",
+      "categoryName": "Deep Learning",
+      "updatedAt": "2026-03-06",
+      "updatedAtTs": 1772806016
+    },
     {
       "id": "deeplearning-chapter-2-basics-of-neural-network-programming-html",
       "title": "Chapter 2——Basics of Neural Network Programming",
