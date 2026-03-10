@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-03-06 16:13:01 +0200",
-  "total": 28,
+  "generatedAt": "2026-03-10 10:18:04 +0200",
+  "total": 31,
   "categories": [
     {
       "key": "all",
       "name": "全部",
-      "count": 28
+      "count": 31
     },
     {
       "key": "timeseries",
@@ -25,7 +25,7 @@
     {
       "key": "deeplearning",
       "name": "Deep Learning",
-      "count": 11
+      "count": 14
     },
     {
       "key": "signalprocessing",
@@ -34,6 +34,36 @@
     }
   ],
   "notes": [
+    {
+      "id": "deeplearning-chapter-14-sequence-to-sequence-models-html",
+      "title": "Chapter 14——Sequence to Sequence Models",
+      "fileName": "Chapter 14——Sequence to Sequence Models.html",
+      "path": "DeepLearning/Chapter 14——Sequence to Sequence Models.html",
+      "category": "deeplearning",
+      "categoryName": "Deep Learning",
+      "updatedAt": "2026-03-10",
+      "updatedAtTs": 1773130507
+    },
+    {
+      "id": "deeplearning-chapter-13-nlp-and-word-embeddings-html",
+      "title": "Chapter 13——NLP and Word Embeddings",
+      "fileName": "Chapter 13——NLP and Word Embeddings.html",
+      "path": "DeepLearning/Chapter 13——NLP and Word Embeddings.html",
+      "category": "deeplearning",
+      "categoryName": "Deep Learning",
+      "updatedAt": "2026-03-10",
+      "updatedAtTs": 1773130487
+    },
+    {
+      "id": "deeplearning-chapter-12-recurrent-neural-networks-html",
+      "title": "Chapter 12——Recurrent Neural Networks",
+      "fileName": "Chapter 12——Recurrent Neural Networks.html",
+      "path": "DeepLearning/Chapter 12——Recurrent Neural Networks.html",
+      "category": "deeplearning",
+      "categoryName": "Deep Learning",
+      "updatedAt": "2026-03-10",
+      "updatedAtTs": 1773130469
+    },
     {
       "id": "deeplearning-chapter-11-object-detection-html",
       "title": "Chapter 11——Object Detection",
