@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-03-10 10:18:04 +0200",
-  "total": 31,
+  "generatedAt": "2026-03-13 20:31:17 +0800",
+  "total": 35,
   "categories": [
     {
       "key": "all",
       "name": "全部",
-      "count": 31
+      "count": 35
     },
     {
       "key": "timeseries",
@@ -20,7 +20,7 @@
     {
       "key": "stochasticprocesses",
       "name": "随机过程",
-      "count": 3
+      "count": 7
     },
     {
       "key": "deeplearning",
@@ -34,6 +34,36 @@
     }
   ],
   "notes": [
+    {
+      "id": "stochasticprocesses-6-pdf",
+      "title": "6 高斯过程二",
+      "fileName": "6-高斯过程二.pdf",
+      "path": "StochasticProcesses/6-高斯过程二.pdf",
+      "category": "stochasticprocesses",
+      "categoryName": "随机过程",
+      "updatedAt": "2026-03-13",
+      "updatedAtTs": 1773404891
+    },
+    {
+      "id": "stochasticprocesses-5-pdf",
+      "title": "5 高斯过程一",
+      "fileName": "5-高斯过程一.pdf",
+      "path": "StochasticProcesses/5-高斯过程一.pdf",
+      "category": "stochasticprocesses",
+      "categoryName": "随机过程",
+      "updatedAt": "2026-03-13",
+      "updatedAtTs": 1773404872
+    },
+    {
+      "id": "stochasticprocesses-7-pdf",
+      "title": "7 高斯过程与非线性",
+      "fileName": "7-高斯过程与非线性.pdf",
+      "path": "StochasticProcesses/7-高斯过程与非线性.pdf",
+      "category": "stochasticprocesses",
+      "categoryName": "随机过程",
+      "updatedAt": "2026-03-13",
+      "updatedAtTs": 1773404825
+    },
     {
       "id": "deeplearning-chapter-14-sequence-to-sequence-models-html",
       "title": "Chapter 14——Sequence to Sequence Models",
@@ -63,6 +93,16 @@
       "categoryName": "Deep Learning",
       "updatedAt": "2026-03-10",
       "updatedAtTs": 1773130469
+    },
+    {
+      "id": "stochasticprocesses-4-pdf",
+      "title": "4 高斯无处不在",
+      "fileName": "4-高斯无处不在.pdf",
+      "path": "StochasticProcesses/4-高斯无处不在.pdf",
+      "category": "stochasticprocesses",
+      "categoryName": "随机过程",
+      "updatedAt": "2026-03-07",
+      "updatedAtTs": 1772824256
     },
     {
       "id": "deeplearning-chapter-11-object-detection-html",
@@ -271,7 +311,7 @@
       "path": "TimeSeries/Chapter9.html",
       "category": "timeseries",
       "categoryName": "时间序列",
-      "updatedAt": "2026-02-01",
+      "updatedAt": "2026-02-02",
       "updatedAtTs": 1769973437
     },
     {
@@ -281,7 +321,7 @@
       "path": "TimeSeries/Chapter8.html",
       "category": "timeseries",
       "categoryName": "时间序列",
-      "updatedAt": "2026-02-01",
+      "updatedAt": "2026-02-02",
       "updatedAtTs": 1769973433
     },
     {
@@ -291,7 +331,7 @@
       "path": "TimeSeries/Chapter7.html",
       "category": "timeseries",
       "categoryName": "时间序列",
-      "updatedAt": "2026-02-01",
+      "updatedAt": "2026-02-02",
       "updatedAtTs": 1769973428
     },
     {
@@ -301,7 +341,7 @@
       "path": "TimeSeries/Chapter6.html",
       "category": "timeseries",
       "categoryName": "时间序列",
-      "updatedAt": "2026-02-01",
+      "updatedAt": "2026-02-02",
       "updatedAtTs": 1769973144
     },
     {
@@ -311,7 +351,7 @@
       "path": "TimeSeries/Chapter5.html",
       "category": "timeseries",
       "categoryName": "时间序列",
-      "updatedAt": "2026-02-01",
+      "updatedAt": "2026-02-02",
       "updatedAtTs": 1769972409
     },
     {
@@ -321,7 +361,7 @@
       "path": "TimeSeries/Chapter3.html",
       "category": "timeseries",
       "categoryName": "时间序列",
-      "updatedAt": "2026-02-01",
+      "updatedAt": "2026-02-02",
       "updatedAtTs": 1769972176
     },
     {
@@ -331,7 +371,7 @@
       "path": "TimeSeries/Chapter1.html",
       "category": "timeseries",
       "categoryName": "时间序列",
-      "updatedAt": "2026-02-01",
+      "updatedAt": "2026-02-02",
       "updatedAtTs": 1769971641
     },
     {
@@ -341,7 +381,7 @@
       "path": "TimeSeries/Chapter10.html",
       "category": "timeseries",
       "categoryName": "时间序列",
-      "updatedAt": "2026-02-01",
+      "updatedAt": "2026-02-02",
       "updatedAtTs": 1769971091
     }
   ]
