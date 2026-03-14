@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-03-13 20:31:17 +0800",
-  "total": 35,
+  "generatedAt": "2026-03-14 15:58:12 +0800",
+  "total": 36,
   "categories": [
     {
       "key": "all",
       "name": "全部",
-      "count": 35
+      "count": 36
     },
     {
       "key": "timeseries",
@@ -20,7 +20,7 @@
     {
       "key": "stochasticprocesses",
       "name": "随机过程",
-      "count": 7
+      "count": 8
     },
     {
       "key": "deeplearning",
@@ -34,6 +34,16 @@
     }
   ],
   "notes": [
+    {
+      "id": "stochasticprocesses-8-pdf",
+      "title": "8 高斯过程的应用",
+      "fileName": "8-高斯过程的应用.pdf",
+      "path": "StochasticProcesses/8-高斯过程的应用.pdf",
+      "category": "stochasticprocesses",
+      "categoryName": "随机过程",
+      "updatedAt": "2026-03-14",
+      "updatedAtTs": 1773475026
+    },
     {
       "id": "stochasticprocesses-6-pdf",
       "title": "6 高斯过程二",
